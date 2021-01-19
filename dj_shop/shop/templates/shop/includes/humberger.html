@@ -1,0 +1,95 @@
+{% load i18n %}
+{% load product_tags %}
+{% load static %}
+<!-- Humberger Begin -->
+    <div class="humberger__menu__overlay"></div>
+
+    <div class="humberger__menu__wrapper">
+        <div class="humberger__menu__logo">
+        	<!-- Logo -->
+            <a href="{% url 'shop:product_list' %}"><img src="{% static 'img/logo.png' %}" alt=""></a>
+        </div>
+
+        <div class="humberger__menu__cart">
+            {% with total_items=cart|length %}
+                <ul>
+            	    <!-- Wishlisti context pocessora owurip len bilen sany cykaryan -->
+                    <li><a href="#"><i class="fa fa-heart"></i> <span>{% with total_items_wish=wishlist|length %}{{ total_items_wish }}{% endwith %}</span></a></li>
+                    {% if total_items < 1 %}{% with total_items=0 %}
+                        <li><a href="{% url 'cart:cart_detail' %}"><i class="fa fa-shopping-bag"></i><span>{{ total_items }}</span></a></li>
+                    {% endwith %}{% endif %}
+                </ul>
+                {% if total_items > 0 %}
+                    <div class="header__cart__price">
+                        {% blocktrans with total=cart.get_total_price count items=total_items %}
+                            {{ items }} item, ${{ total }}
+                        {% plural %}
+                            {{ items }} items, ${{ total }}
+                        {% endblocktrans %}
+                    </div>
+                {% endif %} 
+            {% endwith %}
+        </div>
+        <div class="humberger__menu__widget">
+
+        	<!-- Languages -->
+            <div class="header__top__right__language">
+                <a href='/{{ language.code }}/'>
+                    <img class='icon_img' src="{% static 'img/' %}{{language.code}}.ico">
+                    <div>{{ language.name }}</div>
+                </a>
+                <span class="arrow_carrot-down"></span>
+                <ul>
+                    {% for language in languages %}">
+                        <li><a href="/{{ language.code }}/">{{language.name}}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <!-- Login -->
+            <div class="header__top__right__auth">
+                <a href="{% url 'login' %}"><i class="fa fa-user"></i> {% trans "Login" %}</a>
+            </div>
+        </div>
+
+        <!-- Navigation of humburger -->
+        <nav class="humberger__menu__nav mobile-menu">
+            <ul>
+                <li class="active"><a href="{% url 'shop:product_list' %}">{% trans "Home" %}</a></li>
+ <!-- Categories -->
+                <li><a href="{% url 'shop:product_list' %}">{% trans "Categories" %}</a>
+                    {% if categories %}
+                        <ul class="header__menu__dropdown">
+                            {% for c in categories %}
+                                <li><a href="{{ c.get_absolute_url }}">{{ c.name }}</a></li>
+					        {% endfor %}
+                        </ul>
+                    {% endif %}
+                </li>   
+                <li><a href="{% url 'cart:cart_detail' %}">{% trans "Shoping Cart" %}</a></li>
+                <li><a href="{% url 'orders:order_create' %}">{% trans "Check Out" %}</a></li>
+                <!-- <li><a href="./blog.html">Blog</a></li> -->
+                <li><a href="{% url 'shop:contact' %}">{% trans "Contact" %}</a></li> 
+                <li><a href="{% url 'dashboard' %}">{% trans "Dashboard" %}</a></li> 
+            </ul>
+        </nav>
+        <div id="mobile-menu-wrap"></div>
+        <div class="header__top__right__social">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-pinterest-p"></i></a>
+        </div>
+        <div class="humberger__menu__contact">
+            <ul>
+                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
+                <!-- <li>Free Shipping for all Order of $99</li> -->
+            </ul>
+        </div>
+    </div>
+    <!-- Humberger End --> 
+
+
+
+
+

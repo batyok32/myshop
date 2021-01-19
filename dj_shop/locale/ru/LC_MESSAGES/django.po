@@ -1,0 +1,401 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#: cart/forms.py:11
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-09 20:24+0000\n"
+"PO-Revision-Date: 2021-01-09 20:21+0000\n"
+"Last-Translator: b'  <>'\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+"X-Translated-Using: django-rosetta 0.9.5\n"
+
+#: cart/templates/cart/detail.html:7 cart/templates/cart/detail.html:50
+msgid "Your shopping cart"
+msgstr "Корзина"
+
+#: cart/templates/cart/detail.html:30 cart/templates/cart/detail.html:33
+#, fuzzy
+#| msgid "Your shopping cart"
+msgid "Shopping Cart"
+msgstr "Корзина"
+
+#: cart/templates/cart/detail.html:32 shop/templates/shop/header.html:67
+#: shop/templates/shop/humberger.html:58
+#: shop/templates/shop/product/detail.html:30
+#: shop/templates/shop/product/list.html:25
+msgid "Home"
+msgstr ""
+
+#: cart/templates/cart/detail.html:51
+msgid "Price"
+msgstr "Цена"
+
+#: cart/templates/cart/detail.html:52
+msgid "Quantity"
+msgstr "Количество"
+
+#: cart/templates/cart/detail.html:53 cart/templates/cart/detail.html:236
+msgid "Total"
+msgstr "Всего"
+
+#: cart/templates/cart/detail.html:157 cart/templates/cart/detail.html:203
+msgid "Update"
+msgstr "Обновить"
+
+#: cart/templates/cart/detail.html:209
+#: wishlist/templates/wishlist/detail.html:20
+msgid "Remove"
+msgstr "Убрать"
+
+#: cart/templates/cart/detail.html:220
+msgid "Subtotal"
+msgstr "Промежуточный итог"
+
+#: cart/templates/cart/detail.html:226
+msgid "coupon"
+msgstr "купон"
+
+#: cart/templates/cart/detail.html:248
+#: shop/templates/shop/product/detail.html:200
+msgid "People who bought this also bought"
+msgstr "Люди, которые купили это, также купили"
+
+#: cart/templates/cart/detail.html:261
+msgid "Apply a coupon"
+msgstr "Применить купон"
+
+#: cart/templates/cart/detail.html:264
+msgid "Apply"
+msgstr "Применять"
+
+#: cart/templates/cart/detail.html:268
+#: wishlist/templates/wishlist/detail.html:27
+msgid "Continue shopping"
+msgstr "Продолжить покупки"
+
+#: cart/templates/cart/detail.html:269
+msgid "Checkout"
+msgstr "Касса"
+
+#: cart/views.py:26
+msgid "We are really sorry but we dont have so much"
+msgstr ""
+
+#: coupons/forms.py:5
+msgid "Coupon"
+msgstr "Купон"
+
+#: myshop/settings.py:152
+msgid "English"
+msgstr "Английский"
+
+#: myshop/settings.py:153
+msgid "Turkmen"
+msgstr "Туркменский"
+
+#: myshop/settings.py:154
+msgid "Russian"
+msgstr "Русский"
+
+#: shop/templates/shop/base.html:12
+msgid "Online Telefon magazyny"
+msgstr ""
+
+#: shop/templates/shop/header.html:68 shop/templates/shop/humberger.html:60
+#: shop/templates/shop/product/index.html:65
+msgid "Categories"
+msgstr "Категории"
+
+#: shop/templates/shop/header.html:91
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| "                %(items)s item, $%(total)s\n"
+#| "              "
+#| msgid_plural ""
+#| "\n"
+#| "                %(items)s items, $%(total)s\n"
+#| "              "
+msgid ""
+"\n"
+"                                        %(items)s item, $%(total)s\n"
+"                                    "
+msgid_plural ""
+"\n"
+"                                        %(items)s items, $%(total)s\n"
+"                                    "
+msgstr[0] ""
+"\n"
+" %(items)s produkt, $%(total)s"
+msgstr[1] ""
+"\n"
+" %(items)s produktlar, $%(total)s"
+
+#: shop/templates/shop/humberger.html:24
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| "                %(items)s item, $%(total)s\n"
+#| "              "
+#| msgid_plural ""
+#| "\n"
+#| "                %(items)s items, $%(total)s\n"
+#| "              "
+msgid ""
+"\n"
+"                            %(items)s item, $%(total)s\n"
+"                        "
+msgid_plural ""
+"\n"
+"                            %(items)s items, $%(total)s\n"
+"                        "
+msgstr[0] ""
+"\n"
+" %(items)s produkt, $%(total)s"
+msgstr[1] ""
+"\n"
+" %(items)s produktlar, $%(total)s"
+
+#: shop/templates/shop/humberger.html:51
+msgid "Login"
+msgstr ""
+
+#: shop/templates/shop/humberger.html:69
+#, fuzzy
+#| msgid "Your shopping cart"
+msgid "Shoping Cart"
+msgstr "Корзина"
+
+#: shop/templates/shop/humberger.html:70
+#, fuzzy
+#| msgid "Checkout"
+msgid "Check Out"
+msgstr "Касса"
+
+#: shop/templates/shop/product/detail.html:81
+msgid "New"
+msgstr ""
+
+#: shop/templates/shop/product/detail.html:97
+msgid "Add to cart"
+msgstr "Добавить в корзину"
+
+#: shop/templates/shop/product/detail.html:103
+#, fuzzy
+#| msgid "Add to wishlist"
+msgid "Add to Wishlist"
+msgstr "Добавить в список желаний"
+
+#: shop/templates/shop/product/detail.html:127
+msgid "Description"
+msgstr ""
+
+#: shop/templates/shop/product/detail.html:131
+#: shop/templates/shop/product/detail.html:148
+msgid "Add a comment"
+msgstr ""
+
+#: shop/templates/shop/product/detail.html:135
+msgid "Comments"
+msgstr ""
+
+#: shop/templates/shop/product/detail.html:142
+#: shop/templates/shop/product/detail.html:165
+msgid "Products Infomation"
+msgstr ""
+
+#: shop/templates/shop/product/detail.html:151
+msgid "Your comment has been added."
+msgstr ""
+
+#: shop/templates/shop/product/detail.html:153
+msgid "Add a new comment"
+msgstr ""
+
+#: shop/templates/shop/product/detail.html:157
+msgid "Add comment"
+msgstr ""
+
+#: shop/templates/shop/product/detail.html:169
+#, python-format
+msgid "%(total_comments)s comment%(total_comments|pluralize)s"
+msgstr ""
+
+#: shop/templates/shop/product/detail.html:176
+#, python-format
+msgid "Comment %(forloop.counter)s by %(comment.name)s"
+msgstr ""
+
+#: shop/templates/shop/product/detail.html:181
+msgid "There are no comments yet"
+msgstr ""
+
+#: shop/templates/shop/product/index.html:19
+#, fuzzy
+#| msgid "Categories"
+msgid "All Categories"
+msgstr "Категории"
+
+#: shop/templates/shop/product/index.html:36
+msgid "SEARCH"
+msgstr ""
+
+#: shop/templates/shop/product/index.html:43
+#, python-format
+msgid ""
+"\n"
+"                                <span>FRUIT FRESH</span>\n"
+"                                <h2>Vegetable <br />100%% Organic</h2>\n"
+"                                <p>Free Pickup and Delivery Available</p>\n"
+"                            "
+msgstr ""
+
+#: shop/templates/shop/product/index.html:48
+msgid "SHOP NOW"
+msgstr ""
+
+#: shop/templates/shop/product/index.html:100
+#, fuzzy
+#| msgid "Product"
+msgid "Latest Product"
+msgstr "Продукт"
+
+#: shop/templates/shop/product/index.html:150
+msgid "Most Viewed Product"
+msgstr ""
+
+#: shop/templates/shop/product/index.html:207
+msgid "Max price Product"
+msgstr ""
+
+#: shop/templates/shop/product/index.html:260
+#, fuzzy
+#| msgid "Product"
+msgid "All Product"
+msgstr "Продукт"
+
+#: shop/templates/shop/product/index.html:314
+msgid "Min price Product"
+msgstr ""
+
+#: shop/templates/shop/product/list.html:10
+msgid "Products"
+msgstr "Продукты"
+
+#: shop/templates/shop/product/list.html:23
+msgid "Organi Shop"
+msgstr ""
+
+#: shop/templates/shop/product/list.html:29
+msgid "Shop"
+msgstr ""
+
+#: shop/templates/shop/product/list.html:61
+msgid "Sort By"
+msgstr ""
+
+#: shop/templates/shop/product/list.html:80
+#, fuzzy
+#| msgid "Products"
+msgid "Products found"
+msgstr "Продукты"
+
+#: shop/templates/shop/product/list.html:127
+#, python-format
+msgid ""
+"Showing products %(products.start_index)s - %(products.end_index)s of "
+"%(products.count)s results."
+msgstr ""
+
+#: shop/templates/shop/product/list.html:151
+msgid "Most Viewed"
+msgstr ""
+
+#: shop/templates/shop/product/pagination.html:8
+#, python-format
+msgid "Page %(page.number)s of %(page.paginator.num_pages)s."
+msgstr ""
+
+#: shop/templates/shop/product/search.html:5
+msgid "Search"
+msgstr ""
+
+#: shop/templates/shop/product/search.html:9
+msgid "Products containing "
+msgstr ""
+
+#: shop/templates/shop/product/search.html:12
+#, python-format
+msgid "Found %(total_results)s result%(total_results|pluralize)s"
+msgstr ""
+
+#: shop/templates/shop/product/search.html:25
+msgid "There are no results for your query."
+msgstr ""
+
+#: shop/templates/shop/product/search.html:28
+msgid "Search again"
+msgstr ""
+
+#: shop/templates/shop/product/search.html:30
+#, fuzzy
+#| msgid "Products"
+msgid "Search for products"
+msgstr "Продукты"
+
+#: wishlist/templates/wishlist/detail.html:7
+#: wishlist/templates/wishlist/detail.html:11
+msgid "Your shopping wishlist"
+msgstr "Ваш список желаний покупок"
+
+#~ msgid "Image"
+#~ msgstr "Фото"
+
+#~ msgid "Unit price"
+#~ msgstr "Цена за единицу товара"
+
+#~ msgid "My shop"
+#~ msgstr "Мой магазин"
+
+#~ msgid "Language"
+#~ msgstr "Язык"
+
+#~ msgid "Your cart"
+#~ msgstr "Ваша корзина"
+
+#~ msgid "Your cart is empty."
+#~ msgstr "Ваша корзина пуста."
+
+#~ msgid "All"
+#~ msgstr "Все"
+
+#~ msgid "admin/"
+#~ msgstr "admin/"
+
+#~ msgid "account/"
+#~ msgstr "account/"
+
+#~ msgid "cart/"
+#~ msgstr "korzina/"
+
+#~ msgid "wishlist"
+#~ msgstr "список желаний"
+
+#~ msgid "orders"
+#~ msgstr "заказы"
+
+#~ msgid "coupons"
+#~ msgstr "купоны"

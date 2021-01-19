@@ -1,0 +1,246 @@
+{% extends "account_base.html" %}
+{% load static %}
+{% load i18n %}
+{% load product_tags %}
+{% block title %}Create an account{% endblock %}
+
+{% block content %}
+    {% if form.errors %}
+    <p class='container' style='margin-top:35px; margin-bottom:35px;'>
+      <strong> {% trans "Your username and password didn't match.  Please try again" %}.</strong>
+    </p>
+    
+  {% endif %}
+{% if messages %}
+    {% for message in messages %}
+        <div class="container-fluid p-0">
+            <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                {{ message }}
+            </div>
+        </div>
+    {% endfor %}
+    {% endif %}
+ <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="{% static 'img/11.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>{% trans "Register" %}</h2>
+                        <div class="breadcrumb__option">
+                            <a href="{% url 'shop:product_list' %}">{% trans "Home" %}/</a>
+                            <a href="{% url 'dashboard' %}">{% trans "Dashboard" %}/</a>
+                            <span>{% trans "Register" %}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                            </div>
+                            <form method='post' class="user">
+                                <div class="form-group row">
+                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                      {{ user_form.username.errors}}
+                                      {{ user_form.username.label }}
+                                        {% comment %} <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                            placeholder="First Name"> {% endcomment %}
+                                        {{ user_form.username|addclass:"form-control form-control-user" }}
+                                    </div>
+                                    
+                                </div>
+                                <div class="form-group">
+                                  {{ user_form.phone_number.errors }}
+                                  {{ user_form.phone_number.label }}
+                                    {% comment %} <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                                        placeholder="Email Address"> {% endcomment %}
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">+993</span>
+                                               {{ user_form.phone_number|addclass:"form-control form-control-user" }}
+                                            </div>
+                                    
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                      {{ user_form.password.errors }}
+                                      {{ user_form.password.label }}
+                                        {% comment %} <input type="password" class="form-control form-control-user"
+                                            id="exampleInputPassword" placeholder="Password"> {% endcomment %}
+                                      {{ user_form.password|addclass:'form-control form-control-user' }}
+                                    </div>
+                                    <div class="col-sm-6">
+                                      {{ user_form.password2.errors }}
+                                      {{ user_form.password2.label }}
+                                        {% comment %} <input type="password" class="form-control form-control-user"
+                                            id="exampleRepeatPassword" placeholder="Repeat Password"> {% endcomment %}
+                                      {{ user_form.password2|addclass:'form-control form-control-user' }}
+                                    </div>
+                                </div>
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-primary btn-user btn-block">{% trans "Register" %}</button>
+                          
+                            </form>
+                            <hr>
+                            <div class="text-center">
+                                <a class="small" href="{% url 'password_reset' %}">Forgot Password?</a>
+                            </div>
+                            <div class="text-center">
+                                <a class="small" href="{% url 'login' %}">Already have an account? Login!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Checkout Section Begin -->
+<!-- Checkout Section Begin -->
+    {% comment %} <section class="checkout spad">
+        <div class="container">
+            <div class="checkout__form">
+                <h4>{% trans "Register" %}</h4>
+                 <form method="post" class="order-form">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-6">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        {{ user_form.username.errors}}
+                                        <p>Fist Name<span>*</span></p>
+                                        {{ user_form.username }}
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+
+                                    <div class="checkout__input">
+                                        {{ user_form.phone_number.errors }}
+                                        <p>Phone<span>*</span></p>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">+993</span>
+                                                {{ user_form.phone_number }}
+                                            </div>
+                                            
+                                        </div>
+                                      </div>
+                                  </div>
+                                </div>
+
+                                    <div class="checkout__input">
+                                        {{ user_form.password.errors }}
+                                        <p>Password<span>*</span></p>
+                                        {{ user_form.password }}
+                                    </div>
+
+                            <div class="checkout__input">
+                                {{ user_form.password2.errors }}
+                                <p>Repeat Password<span>*</span></p>
+                                {{ user_form.password2 }}
+                            </div>
+                           {% csrf_token %}
+                        <button type="submit" class="btn btn-success">{% trans "Register" %}</button>
+                        </div>
+                                        
+                        
+                      </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            <div>
+        </div>
+    </section> {% endcomment %}
+    <!-- Checkout Section End -->
+
+  {% comment %} <h1>Create an account</h1>
+  <p>Please, sign up using the following form:</p>
+  <form method="post">
+    {{ user_form.as_p }}
+    {% csrf_token %}
+    <p><input type="submit" value="Create my account"></p>
+  </form> {% endcomment %}
+
+{% comment %} 
+  <div class='container'  style='margin-top:35px; margin-bottom:35px;font-weight:bold;'>
+   <h1>Create an account</h1> 
+    <p>Please, sign up using the following form:</p>
+  </div> {% endcomment %}
+
+  {% comment %} <div class="container">
+    <h3>Sign up</h3>
+    <p>Sign up is easy.</p>
+    <form id="form" class="form" method="post">
+      <div class="form__group">
+        <label for="name" class="">Username</label>
+        {{ user_form.username.errors }}
+        {{ user_form.username }}
+        <span class="helper-text"></span>
+      </div>
+
+      <div class="form__group">
+        <label for="email" class="">Phone number</label>
+        {{ user_form.phone_number.errors }}
+        {{ user_form.phone_number }}
+        <span class="helper-text"></span>
+      </div>
+
+      <div class="form__group">
+        <label for="password" class="">Password</label>
+        {{ user_form.password.errors }}
+        {{ user_form.password }}
+        <span class="helper-text"></span>
+      </div>
+
+      <div class="form__group">
+        <label for="passwordConfirm" class="">Confirm Password</label>
+        {{ user_form.password2.errors }}
+        {{ user_form.password2 }}
+        <span class="helper-text"></span>
+      </div>
+      {% csrf_token %}
+      <button class="btn__large">Register</button>
+    </form> {% endcomment %}
+    
+    {% comment %} <form id="form" class="form" action="{% url 'login' %}" method="post">
+      <div class="form__group">
+        <label for="name" class="">Name</label>
+        {{ form.username }}
+        <span class="helper-text"></span>
+      </div>
+
+
+      <div class="form__group">
+        <label for="password" class="">Password</label>
+        {{ form.password }}        
+        <span class="helper-text"></span>
+      </div>
+
+      {% csrf_token %}
+      <button class="btn__large">Login</button>
+    </form> {% endcomment %}
+    
+{% endblock %}

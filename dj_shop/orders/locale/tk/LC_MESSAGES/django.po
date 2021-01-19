@@ -1,0 +1,160 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-09 20:24+0000\n"
+"PO-Revision-Date: 2020-12-29 06:48+0000\n"
+"Last-Translator: b'  <>'\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Translated-Using: django-rosetta 0.9.5\n"
+
+#: orders/models.py:18
+msgid "first name"
+msgstr "at"
+
+#: orders/models.py:19
+msgid "email"
+msgstr "pocta"
+
+#: orders/models.py:20
+msgid "address"
+msgstr "adress"
+
+#: orders/models.py:21
+msgid "city"
+msgstr "saher"
+
+#: orders/models.py:32
+msgid "phone_number"
+msgstr ""
+
+#: orders/templates/admin/orders/order/detail.html:4
+#: orders/templates/admin/orders/order/detail.html:11
+#: orders/templates/admin/orders/order/detail.html:17
+msgid "Order"
+msgstr "Sargyt"
+
+#: orders/templates/admin/orders/order/detail.html:9
+msgid "Home"
+msgstr "Öý"
+
+#: orders/templates/admin/orders/order/detail.html:10
+msgid "Orders"
+msgstr "Sargytlar"
+
+#: orders/templates/admin/orders/order/detail.html:12
+msgid "Detail"
+msgstr "Jikme-jiklik"
+
+#: orders/templates/admin/orders/order/detail.html:20
+msgid "Print order"
+msgstr "Çap et"
+
+#: orders/templates/admin/orders/order/detail.html:25
+msgid "Created"
+msgstr "Döredildi"
+
+#: orders/templates/admin/orders/order/detail.html:29
+msgid "Customer"
+msgstr "Müşderi"
+
+#: orders/templates/admin/orders/order/detail.html:33
+#, fuzzy
+#| msgid "email"
+msgid "E-mail"
+msgstr "pocta"
+
+#: orders/templates/admin/orders/order/detail.html:37
+#, fuzzy
+#| msgid "address"
+msgid "Address"
+msgstr "adress"
+
+#: orders/templates/admin/orders/order/detail.html:44
+msgid "Total amount"
+msgstr "Jemi mukdar"
+
+#: orders/templates/admin/orders/order/detail.html:55
+msgid "Items bought"
+msgstr "Satyn alnan zatlar"
+
+#: orders/templates/admin/orders/order/detail.html:59
+msgid "Product"
+msgstr "Haryt"
+
+#: orders/templates/admin/orders/order/detail.html:60
+msgid "Price"
+msgstr "Bahasy"
+
+#: orders/templates/admin/orders/order/detail.html:61
+msgid "Quantity"
+msgstr "Mukdar"
+
+#: orders/templates/admin/orders/order/detail.html:62
+msgid "Coupon code"
+msgstr ""
+
+#: orders/templates/admin/orders/order/detail.html:63
+msgid "Discont"
+msgstr ""
+
+#: orders/templates/admin/orders/order/detail.html:64
+#: orders/templates/admin/orders/order/detail.html:79
+#: orders/templates/orders/order/create.html:28
+msgid "Total"
+msgstr "Jemi"
+
+#: orders/templates/orders/order/create.html:5
+#: orders/templates/orders/order/create.html:10
+msgid "Checkout"
+msgstr "Çykyş"
+
+#: orders/templates/orders/order/create.html:12
+msgid "Your order"
+msgstr "Sargyt"
+
+#: orders/templates/orders/order/create.html:22
+#, python-format
+msgid ""
+"\n"
+"                        \"%(code)s\" (%(discount)s%% off)\n"
+"                    "
+msgstr ""
+"\n"
+" \"%(code)s\" (%(discount)s%% off)"
+
+#: orders/templates/orders/order/create.html:32
+msgid "Place order"
+msgstr "Sargyt"
+
+#: orders/templates/orders/order/created.html:4
+#: orders/templates/orders/order/created.html:8
+msgid "Thank you"
+msgstr "Sagbol"
+
+#: orders/templates/orders/order/created.html:9
+msgid "Your order has been successfully completed. Your order number is"
+msgstr "Sargydyňyz üstünlikli ýerine ýetirildi Sargyt belgiňiz"
+
+#~ msgid "last name"
+#~ msgstr "familiya"
+
+#~ msgid "Status"
+#~ msgstr "Yagday"
+
+#~ msgid "Paid"
+#~ msgstr "Tölegli"
+
+#~ msgid "Pending payment"
+#~ msgstr "Töleg garaşýar"

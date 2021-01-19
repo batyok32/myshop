@@ -1,0 +1,113 @@
+{% extends "account_base.html" %}
+{% load static %}
+{% load i18n %}
+{% load product_tags %}
+{% block title %}Edit your account{% endblock %}
+
+{% block content %}
+{% if messages %}
+    {% for message in messages %}
+        <div class="container-fluid p-0">
+            <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                {{ message }}
+            </div>
+        </div>
+    {% endfor %}
+    {% endif %}
+<!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="{% static 'img/11.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>{% trans "Edit Profile" %}</h2>
+                        <div class="breadcrumb__option">
+                            <a href="{% url 'shop:product_list' %}">{% trans "Home" %}/</a>
+                            <a href="{% url 'dashboard' %}">{% trans "Dashboard" %}/</a>
+                            <span>{% trans "Edit Profile" %}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Profile</h1>
+                            </div>
+                            <form method='post' class="user">
+                                <div class="form-group row">
+                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                      {{ user_form.username.errors}}
+                                      {{ user_form.username.label }}
+                                        {% comment %} <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                            placeholder="First Name"> {% endcomment %}
+                                        {{ user_form.username|addclass:"form-control form-control-user" }}
+                                    </div>
+                                    {% comment %} <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-user" id="exampleLastName"
+                                            placeholder="Last Name">
+                                    </div> {% endcomment %}
+                                </div>
+                                <div class="form-group" style='margin-bottom:35px;'>
+                                  {{ profile_form.phone_number.errors }}
+                                  {{ profile_form.phone_number.label }}
+                                   <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">+993</span>
+                                               {{ profile_form.phone_number|addclass:"form-control form-control-user" }}
+                                            </div>
+                                    {% comment %} <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                                        placeholder="Email Address"> {% endcomment %}
+                                    
+                                </div>
+                                <div class="form-group row" style='margin-top:35px;'>
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                      {{ profile_form.city.errors }}
+                                      {{ profile_form.city.label }}
+                                        {% comment %} <input type="password" class="form-control form-control-user"
+                                            id="exampleInputPassword" placeholder="Password"> {% endcomment %}
+                                      {{ profile_form.city }}
+                                    </div>
+                                    <div style='margin-top:35px;' class="col-sm-12">
+                                      {{  profile_form.address.errors }}
+                                      {{  profile_form.address.label }}
+                                        {% comment %} <input type="password" class="form-control form-control-user"
+                                            id="exampleRepeatPassword" placeholder="Repeat Password"> {% endcomment %}
+                                      {{  profile_form.address|addclass:'form-control form-control-user' }}
+                                    </div>
+                                </div>
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-primary btn-user btn-block">{% trans "Edit " %}</button>
+                          
+                            </form>
+                            <hr>
+                            <div class="text-center">
+                                <a class="small" href="{% url 'password_reset' %}">Forgot Password?</a>
+                            </div>
+                            <div class="text-center">
+                                <a class="small" href="{% url 'login' %}">Already have an account? Login!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+
+{% endblock %}

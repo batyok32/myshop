@@ -1,0 +1,191 @@
+{% extends "shop/base.html" %}
+{% load product_tags %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}
+  {{ category.name }}
+{% endblock %}
+
+{% block content %}
+  {% comment %} {% include carousel.html %} {% endcomment %}
+  <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="{% static 'img/11.jpg' %}">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <div class="breadcrumb__text">
+              <h2>{% trans "Organi Shop" %}</h2>
+              <div class="breadcrumb__option">
+                <a href="{% url 'shop:product_list' %}">{% trans "Home" %}</a>
+                <span>{% if category %}
+                  {{ category.name }}
+                {% else %}
+                  {% trans "Shop" %}
+                {% endif %}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Product Section Begin -->
+    <section class="product spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-5">
+                    <div class="sidebar">
+                        <div class="sidebar__item">
+                            <h4>{% trans "Categories" %}</h4>
+                            <ul>
+                              {% for c in categories %}
+                                <li><a href="{{c.get_absolute_url}}">{{c.name}}</a></li>
+                              {% endfor %}
+                            </ul>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                
+                    <div class="filter__item">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-5">
+                                <div class="filter__sort">
+                                    <span>{% trans "Sort By" %}</span>
+                                    {% comment %} <form action='shop:filter_products' method='get'> {% endcomment %}
+                                    {% comment %} <select>
+                                        <option><a href="{% url 'shop:filter_products' category.slug 'default' %}">Default</a></option>
+                                        <option><a href="{% url 'shop:filter_products' category.slug 'min_price' %}">Min price</a></option>
+                                        <option><a href="{% url 'shop:filter_products' category.slug 'max_price' %}">Max price</a></option>
+                                        <option><a href="{% url 'shop:filter_products' category.slug 'latest' %}">Latest</a></option>
+                                        <button type="submit" class="site-btn">{% trans "SEARCH" %}</button>
+
+                                    </select>  {% endcomment %}
+                                    <div class="nice-select" tabindex="0">
+                                      <span class="current">{% if selected %}{{selected}}{% else %}{% trans "Default" %}{% endif %}</span>
+                                      <ul class="list">
+                                        <li style='color:#1c1c1c;' class="option {% if selected == 'Default' %}selected focus{% endif %}"><a href="{% url 'shop:filter_products' category.slug 'default' %}">{% trans "Default" %}</a></li>
+                                        <li class="option {% if selected == 'Latest products' %}selected focus{% endif %}"><a href="{% url 'shop:filter_products' category.slug 'latest' %}">{% trans "Latest products" %}</a></li>
+                                        <li class="option {% if selected == 'The most expensive' %}selected focus{% endif %}"><a href="{% url 'shop:filter_products' category.slug 'max_price' %}">{% trans "The most expensive" %}</a></li>
+                                        <li class="option {% if selected == 'The cheapest' %}selected focus{% endif %}"><a href="{% url 'shop:filter_products' category.slug 'min_price' %}">{% trans "The cheapest" %}</a></li>
+                                      </ul>
+                                    </div>
+                                    {% comment %} </form> {% endcomment %}
+                                    {% comment %} <a href="{% url 'shop:filter_products' category.slug 'default' %}">Default</a>
+                                    <a href="{% url 'shop:filter_products' category.slug 'latest' %}">Latest</a></option>
+                                    <a href="{% url 'shop:filter_products' category.slug 'max_price' %}">Max price</a>
+                                    <a href="{% url 'shop:filter_products' category.slug 'min_price' %}">Min price</a> {% endcomment %}
+                                </div>
+                            </div> 
+                            <div class="col-lg-4 col-md-4">
+                                <div class="filter__found">
+                                    <h6><span>{{ total_category_products }}</span> {% trans "Products found" %}</h6>
+                                </div>
+                            </div>
+                            {% comment %} <div class="col-lg-4 col-md-3">
+                                <div class="filter__option">
+                                    <span class="icon_grid-2x2"></span>
+                                    <span class="icon_ul"></span>
+                                </div>
+                            </div> {% endcomment %}
+                        </div>
+                    </div>
+                    <div class="row">
+                    {% comment %} <div class='col-lg-12'> {% endcomment %}
+                    {% for product in products %}
+                        <div style='margin-bottom:35px;' class="col-lg-4 col-md-6 col-sm-6">
+                          
+                            <div class="product__discount__item">
+                                <div class="product__discount__item__pic set-bg" data-setbg="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}">
+                                    {% if product.discount %}
+                                      <div class="product__discount__percent">-{{ product.discount }}%</div>
+                                    {% endif %}
+                                    {% if product.was_published_recently %}
+           	                          <div class="product__discount__recent">{% trans "New" %}</div>
+                                    {% endif %}
+                                    <ul class="product__item__pic__hover">
+                                        <li><a href="{% url 'wishlist:wishlist_add' product.id %}"><i class="fa fa-heart"></i></a></li>                                       
+                                        <li><a href="{{product.get_absolute_url}}"><i class="fa fa-search"></i></a></li>
+                                        <li><a href="{% url 'cart:cart_add' product.id %}"><i class="fa fa-shopping-cart"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="product__discount__item__text">
+                                    <h5><a href="{{product.get_absolute_url}}">{{product.name}}</a></h5>
+                                    <div style='font-size:26px;' class="product__item__price">$
+                                      {{ product.get_price_after_dis|floatformat:"2" }} 
+                                      {% if product.discount %}
+                                        <span>${{product.price}}</span>
+                                      {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      {% endfor %}
+                      </div>
+                      {% comment %} <div class="product__discount"> {% endcomment %}
+                        <div style='margin-top:35px;' class='row'>
+                          <div class="col-lg-12">
+                            {% comment %} <div class="d-flex justify-content-center"> {% endcomment %}
+                              Showing products {{products.start_index}} - {{products.end_index}} of {{products.count}} results.
+                            {% include "shop/product/pagination.html" with page=products %}
+                          </div>
+                        </div>                    {% comment %} <div class="product__pagination">
+                        <a href="#">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#"><i class="fa fa-long-arrow-right"></i></a>
+                    </div> {% endcomment %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Product Section End -->
+
+  <section>
+    <div class="col-lg-12 col-md-12">
+      <div class="product__discount">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="section-title related__product__title">
+              <h2>{% trans "Most Viewed" %}</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="product__discount__slider owl-carousel">
+          {% for product in most_viewed %}
+            <div class="col-lg-4">
+              <div class="product__discount__item">
+                <div class="product__discount__item__pic set-bg"
+                   data-setbg="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}">
+                  {% if product.discount %}
+                    <div class="product__discount__percent">-{{ product.discount }}%</div>
+                  {% endif %}
+                  <ul class="product__item__pic__hover">
+                    <li><a href="{% url 'wishlist:wishlist_add' product.id %}"><i class="fa fa-heart"></i></a></li>
+                    <li><a href="{{ product.get_absolute_url }}"><i class="fa fa-search"></i></a></li>
+                    <li><a href="{% url 'cart:cart_add' product.id %}"><i class="fa fa-shopping-cart"></i></a></li>
+                  </ul>
+                </div>
+                <div class="product__discount__item__text">
+                  <span>{{product.category}}</span>
+                  <h5><a href="#">{{product.name}}</a></h5>
+                  <div class="product__item__price">$
+                    {{ product.get_price_after_dis }} 
+                    {% if product.discount %}
+                      <span>${{product.price}}</span>
+                    {% endif %}</div>
+                </div>
+              </div>
+            </div>  
+          {% endfor %}               
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+      
+    
+{% endblock %}

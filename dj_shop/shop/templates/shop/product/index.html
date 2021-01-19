@@ -1,0 +1,330 @@
+{% extends 'shop/base.html' %}
+{% load i18n %}
+{% load product_tags %}
+{% load static %}
+    <!-- List begins -->
+
+{% block content %}
+    {% if messages %}
+    {% for message in messages %}
+        <div class="container-fluid p-0">
+            <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                {{ message }}
+            </div>
+        </div>
+    {% endfor %}
+    {% endif %}
+
+
+    <!-- Hero Section Begin -->
+    <section class="hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="hero__categories">
+                        <div class="hero__categories__all">
+                            <i class="fa fa-bars"></i>
+                            <span>{% trans "All Categories" %}</span>
+                        </div>
+                        <!-- Categories -->
+                        <ul>
+                            {% for c in categories %}
+                                <li><a href="{{ c.get_absolute_url }}">{{ c.name }}</a></li>
+					        {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="hero__search">
+                        <div class="hero__search__form custom_css_form ">
+                        {% comment %} TODO: Duzetmeli {% endcomment %}
+                            <form action="{% url 'shop:product_search' %}">
+                                {{ search_form.query }}
+                                {% comment %} <input type="text" placeholder="What do yo u need?"> {% endcomment %}
+                                <button type="submit" class="site-btn">{% trans "SEARCH" %}</button>
+                            </form> 
+                        </div>
+                    </div>
+
+                    <div class="hero__item set-bg" data-setbg="{% static 'img/hero/banner.jpg' %}">
+                        <div class="hero__text">
+                            {% blocktrans %}
+                                <span style='color:greenyellow;'>FRUIT FRESH</span>
+                                <h2 style='color:ivory;'>Vegetable <br />100% Organic</h2>
+                                <p style='color:floralwhite;'>Free Pickup and Delivery Available</p>
+                            {% endblocktrans %}
+                            <a style='background-color:deepskyblue;' href="{% url 'shop:product_list' %}" class="primary-btn">{% trans "SHOP NOW" %}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+
+    <main>
+
+    	<!-- categories -->
+    	<div>
+            <div class="product__discount">
+              	<div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title related__product__title">
+                        <h2>{% trans "Categories" %}</h2>
+                    </div>
+                </div>
+            </div>
+                <div class="row">
+                    <div class="product__discount__slider owl-carousel">
+                    {% for c in categories %}
+         	            <div class="col-lg-4">
+                            <div class="product__discount__item">
+                                <div class="product__discount__item__pic set-bg"
+                                        data-setbg="{{ c.image.url }}">
+                                    <ul class="product__item__pic__hover">
+                                        <li><a href="{{ c.get_absolute_url }}"><i class="fa fa-search"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="product__discount__item__text">
+                                    <h5><a href="{{ c.get_absolute_url }}">{{c.name}}</a></h5>
+                                </div>
+                        	</div>
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+<!-- New products -->
+        
+        <div>
+            <div class="product__discount">
+              	<div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title related__product__title">
+                        <h2>{% trans "Latest Product" %}</h2>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="product__discount__slider owl-carousel">
+                {% for product in latest_products %}
+     	            <div class="col-lg-4">
+                        <div class="product__discount__item">
+                            <div class="product__discount__item__pic set-bg"
+                                    data-setbg="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+                                {% if product.discount %}
+           	                        <div class="product__discount__percent">-{{product.discount}}%</div>
+                                {% endif %}
+                                {% if product.was_published_recently %}
+           	                        <div class="product__discount__recent">New</div>
+                                {% endif %}
+                                <ul class="product__item__pic__hover">
+                                    <li><a href="{% url 'wishlist:wishlist_add' product.id %}"><i class="fa fa-heart"></i></a></li>
+                                    <li><a href="{{ product.get_absolute_url }}"><i class="fa fa-search"></i></a></li>
+                                    <li><a href="{% url 'cart:cart_add' product.id %}"><i class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product__discount__item__text">
+                                <span>{{ product.category__name }}</span>
+                                <h5><a href="{{product.get_absolute_url}}">{{ product.name }}</a></h5>
+                                {% comment %} Price {% endcomment %}
+                                <div class="product__item__price">$
+                                    {{ product.get_price_after_dis|floatformat:"2" }}
+                                    {% if product.discount %}<span>${{product.price}}</span>{% endif %}
+                                </div>
+                          	</div>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Most Viewed products -->
+        
+        <div>
+            <div class="product__discount">
+              	<div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title related__product__title">
+                        <h2>{% trans "Most Viewed Product" %}</h2>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="product__discount__slider owl-carousel">
+                {% for product in most_viewed %}
+     	            <div class="col-lg-4">
+                        <div class="product__discount__item">
+                            <div class="product__discount__item__pic set-bg"
+                                    data-setbg="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+                                {% if product.discount %}
+           	                        <div class="product__discount__percent">-{{product.discount}}%</div>
+                                {% endif %}
+                                <ul class="product__item__pic__hover">
+
+                                    <li><a href="{% url 'wishlist:wishlist_add' product.id %}"><i class="fa fa-heart"></i></a></li>
+                                    <li><a href="{{ product.get_absolute_url }}"><i class="fa fa-search"></i></a></li>
+                                    <li><a href="{% url 'cart:cart_add' product.id %}"><i class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product__discount__item__text">
+                                <span>{{ product.category__name }}</span>
+                                <h5><a href="#">{{ product.name }}</a></h5>
+                                <div class="product__item__price">$
+                                    {{ product.get_price_after_dis|floatformat:"2" }} 
+                                    {% if product.discount %}<span>${{product.price}}</span>{% endif %}
+                                </div>
+                          	</div>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+                
+        <!-- Max price products -->
+        
+        <div>
+            <div class="product__discount">
+              	<div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title related__product__title">
+                        <h2>{% trans "Max price Product" %}</h2>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="product__discount__slider owl-carousel">
+                {% for product in max_price_products %}
+     	            <div class="col-lg-4">
+                        <div class="product__discount__item">
+                            <div class="product__discount__item__pic set-bg"
+                                    data-setbg="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+                                {% if product.discount %}
+           	                        <div class="product__discount__percent">-{{product.discount}}%</div>
+                                {% endif %}
+                                <ul class="product__item__pic__hover">
+
+                                    <li><a href="{% url 'wishlist:wishlist_add' product.id %}"><i class="fa fa-heart"></i></a></li>
+                                    <li><a href="{{ product.get_absolute_url }}"><i class="fa fa-search"></i></a></li>
+                                    <li><a href="{% url 'cart:cart_add' product.id %}"><i class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product__discount__item__text">
+                                <span>{{ product.category__name }}</span>
+                                <h5><a href="#">{{ product.name }}</a></h5>
+                                <div class="product__item__price">$
+                                    {{ product.get_price_after_dis|floatformat:"2" }} 
+                                    {% if product.discount %}<span>${{product.price}}</span>{% endif %}
+                                </div>
+                          	</div>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+                
+        <!-- Alll products -->
+        
+        <div>
+            <div class="product__discount">
+              	<div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title related__product__title">
+                        <h2>{% trans "All Products" %}</h2>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="product__discount__slider owl-carousel">
+                {% for product in products %}
+     	            <div class="col-lg-4">
+                        <div class="product__discount__item">
+                            <div class="product__discount__item__pic set-bg"
+                                    data-setbg="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+                                {% if product.discount %}
+           	                        <div class="product__discount__percent">-{{product.discount}}%</div>
+                                {% endif %}
+                                <ul class="product__item__pic__hover">
+                                    
+                                    <li><a href="{% url 'wishlist:wishlist_add' product.id %}"><i class="fa fa-heart"></i></a></li>
+                                    <li><a href="{{ product.get_absolute_url }}"><i class="fa fa-search"></i></a></li>
+                                   <li><a href="{% url 'cart:cart_add' product.id %}"><i class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product__discount__item__text">
+                                <span>{{ product.category__name }}</span>
+                                <h5><a href="#">{{ product.name }}</a></h5>
+                                {% comment %} price {% endcomment %}
+                                <div class="product__item__price">$
+                                    {{ product.get_price_after_dis|floatformat:"2" }} 
+                                    {% if product.discount %}<span>${{product.price}}</span>{% endif %}
+                                </div>
+                          	</div>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+        <!-- Min price products -->
+        
+        <div>
+            <div class="product__discount">
+              	<div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title related__product__title">
+                        <h2>{% trans "Min price Product" %}</h2>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="product__discount__slider owl-carousel">
+                {% for product in min_price_products %}
+     	            <div class="col-lg-4">
+                        <div class="product__discount__item">
+                            <div class="product__discount__item__pic set-bg"
+                                    data-setbg="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+                                {% if product.discount %}
+           	                        <div class="product__discount__percent">-{{product.discount}}%</div>
+                                {% endif %}
+                                <ul class="product__item__pic__hover">
+
+                                    <li><a href="{% url 'wishlist:wishlist_add' product.id %}"><i class="fa fa-heart"></i></a></li>
+                                    <li><a href="{{ product.get_absolute_url }}"><i class="fa fa-search"></i></a></li>
+                                    <li><a href="{% url 'cart:cart_add' product.id %}"><i class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product__discount__item__text">
+                                <span>{{ product.category__name }}</span>
+                                <h5><a href="#">{{ product.name }}</a></h5>
+                                <div class="product__item__price">$
+                                    {{ product.get_price_after_dis|floatformat:"2" }}
+                                    {% if product.discount %}<span>${{product.price}}</span>{% endif %}
+                                </div>
+                          	</div>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+
+    
+{% endblock content %}
+	

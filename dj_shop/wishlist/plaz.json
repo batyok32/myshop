@@ -1,0 +1,14 @@
+{'3': 
+    {"quantity": 4, 
+    "price": '<bound method Product.get_total_price_after_discount of <Product: 
+                iphone 3x>>', 'product': 
+                    <Product: 
+                        iphone 3x>, 'total_price': 
+                            '<bound method Product.get_total_price_after_discount of <Product: 
+                                iphone 3x>><bound method Product.get_total_price_after_discount of <Product: 
+                                    iphone 3x>><bound method Product.get_total_price_after_discount of <Product: 
+                                        iphone 3x>><bound method Product.get_total_price_after_discount of <Product: iphone 3x>>', 'update_quantity_form': <CartAddProductForm bound=False, valid=Unknown, fields=(quantity;override)>}, '1': 
+                                        {'quantity': 1, 'price': '150.00', 'product': <Product: туфля>, 'total_price': '150.00', 'update_quantity_form': <CartAddProductForm bound=False, valid=Unknown, fields=(quantity;override)>}, '8': 
+                                        {'quantity': 2, 'price': '125.00', 'product': <Product: Planzaat>, 'total_price': '125.00125.00', 'update_quantity_form': <CartAddProductForm bound=False, valid=Unknown, fields=(quantity;override)>}, '2': 
+                                        {'quantity': 1, 'price': '125.00', 'product': <Product: Iphone x>, 'total_price': '125.00', 'update_quantity_form': <CartAddProductForm bound=False, valid=Unknown, fields=(quantity;override)>}, '4': 
+                                        {'quantity': 3, 'price': '500.00', 'product': <Product: iphone 5x>, 'total_price': '500.00500.00500.00', 'update_quantity_form': <CartAddProductForm bound=False, valid=Unknown, fields=(quantity;override)>}}

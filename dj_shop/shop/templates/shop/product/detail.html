@@ -1,0 +1,264 @@
+{% extends "shop/base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}
+  {{ product.name }}
+{% endblock %}
+
+{% block content %}
+    {% if messages %}
+    {% for message in messages %}
+        <div class="container-fluid p-0">
+            <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                {{ message }}
+            </div>
+        </div>
+    {% endfor %}
+    {% endif %}
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="{% static 'img/11.jpg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>{{product.name}}</h2>
+                        <div class="breadcrumb__option">
+                            <a href="{% url 'shop:product_list' %}">{% trans "Home" %}</a>
+                            <!-- product.category -->
+                            <a href="{{product.category.get_absolute_url}}">{{product.category.name}}</a>
+                            <!-- product.title -->
+                            <span>{{product.name}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Product Details Section Begin -->
+    <section class="product-details spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="product__details__pic">
+                        <div class="product__details__pic__item">
+                            <img class="product__details__pic__item--large"
+                                src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" alt="">
+                        </div>
+                        {% comment %} <div class="product__details__pic__slider owl-carousel">
+                            <img data-imgbigurl="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}"
+                                src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" alt="">
+                        <div> {% endcomment %}
+                        {% if product.image %}
+                        <div class="product__details__pic__slider owl-carousel">
+                            {% if images %}
+                                {% for image in images %}
+                                    <img data-imgbigurl="{{ image.image.url }}"
+                                        src="{{ image.image.url }}" alt="an item" style='width:150px;height:60px;' >
+                                {% endfor %}
+                            {% endif %}
+                            <img data-imgbigurl="{{ product.image.url }}"
+                                src="{{ product.image.url }}" alt="" height=60 width=150>
+                            {% comment %} <img data-imgbigurl="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}"
+                                src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" alt=""> {% endcomment %}
+                            {% comment %} <img data-imgbigurl="{% static 'img/product/details/product-details-3.jpg' %}"
+                                src="{% static 'img/product/details/thumb-2.jpg' %}" alt=""> {% endcomment %}
+                            {% comment %} <img data-imgbigurl="{% static 'img/product/details/product-details-5.jpg' %}"
+                                src="{% static 'img/product/details/thumb-3.jpg' %}" alt=""> {% endcomment %}
+                            {% comment %} <img data-imgbigurl="{% static 'img/product/details/product-details-4.jpg' %}"
+                                src="{% static 'img/product/details/thumb-4.jpg' %}" alt=""> {% endcomment %}
+                        </div> 
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="product__details__text">
+                        <h3>{{product.name}}</h3>
+                        <div class="product__details__rating">
+                            {% comment %} <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-o"></i> {% endcomment %}
+                            <span>({{total_views}} reviews)</span>
+                            {% if product.was_published_recently %}<strong>{% trans "New" %}</strong>{% endif %}
+                        </div>
+                        <div class="product__details__price">$
+                            {{ product.get_price_after_dis|floatformat:"2" }}
+                            {% if product.discount %}<span>${{product.price}}</span>{% endif %}
+                        </div>
+                        <ul>
+                            <li><b>{% trans "Amount" %}</b> <span>{{product.amount}}</span></li>
+                            <li><b>Publish date</b> <span>{{product.created}}</span></li>
+                            <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
+                            {% if product.discount %}<li><b>{% trans "Discount" %}</b> <span>-{{product.discount}}%</span></li>{% endif %}
+                            {% comment %} <li><b>Share on</b>
+                                <div class="share">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-instagram"></i></a>
+                                    <a href="#"><i class="fa fa-pinterest"></i></a>
+                                </div>
+                            </li> {% endcomment %}
+                        </ul>
+                        {% comment %} {% if product.discount %}
+           	              <div class='discount-btn' >-{{product.discount}}%</div>
+                        {% endif %} {% endcomment %}
+                        
+           	            {% comment %} <div class='discount-btn' >{{product.amount}}</div> {% endcomment %}
+                        {% comment %} {% if product.was_published_recently %}
+           	                <div class='new-btn' >{% trans "New" %}</div>
+                        {% endif %} {% endcomment %}
+                        
+                         
+                        <div class="product__details__quantity">
+                            <div class="quantity">
+                                {% comment %} <div class="pro-qty"> {% endcomment %}
+                                    {% comment %} <i class="fa fa-user icon"> </i>  {% endcomment %}
+                                    
+                                    <form action="{% url "cart:cart_add" product.id %}" method="post">
+                                        {% comment %} <div class='row'> {% endcomment %}
+                                            {% comment %} <div class='col-lg-9'> {% endcomment %}
+                                                <div class="pro-qty">
+                                                    {{ cart_product_form.quantity }}
+                                                    {{ cart_product_form.override }}
+                                                </div>
+                                                {% csrf_token %}
+                                                <button type="submit" class="btn btn-light"><i style='color:black;' class="fa fa-shopping-cart"></i></button>
+                                                <button type="button" class="btn btn-link"><a style='color:red;' href="{% url 'wishlist:wishlist_add' product.id %}"><i class="fa fa-heart"></i></button>
+                                            {% comment %} </div> {% endcomment %}
+                                            {% comment %} <div class='col-lg-3'>
+                                                <button type="submit" class="btn btn-light"><i class="fa fa-shopping-cart"></i></button>
+                                                {% comment %} <input class='primary-btn' type="submit" value="{% trans "Add to cart" %}"> 
+                                            </div> {% endcomment %}
+                                        {% comment %} </div> {% endcomment %}
+                                        {% comment %} <a href="{% url 'wishlist:wishlist_add' product.id %}"><i class="fa fa-heart"></i></a> {% endcomment %}
+                                    </form>
+                            </div>
+
+                        
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="product__details__tab">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
+                                    aria-selected="true">{% trans "Description" %}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"
+                                    aria-selected="false">{% trans "Add a comment" %}</a>
+                            </li>
+                           <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"
+                                    aria-selected="false">{% trans "Comments" %}</a>
+                            </li>
+                            
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                                <div class="product__details__tab__desc">
+                                    <h6>{% trans "Products Infomation" %}</h6>
+                                    <p>{{product.description|safe}}</p>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-2" role="tabpanel">
+                                <div class="product__details__tab__desc">
+                                    <h6>{% trans "Add a comment" %}</h6>
+                                    <p>
+                                    {% if new_comment %}
+                                      <h2>{% trans "Your comment has been added." %}</h2>
+                                    {% else %}
+                                      <h2>{% trans "Add a new comment" %}</h2>
+                                      <form method="post">
+                                        {{ comment_form.as_p }}
+                                        {% csrf_token %}
+                                        <p><input type="submit" value="{% trans "Add comment" %}"></p>
+                                      </form>
+                                    {% endif %}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-3" role="tabpanel">
+                                <div class="product__details__tab__desc">
+                                    <h6>{% trans "Products Infomation" %}</h6>
+                                    <p>
+                                    {% with comments.count as total_comments %}
+                                      <h2>
+                                        {% blocktrans %}{{ total_comments }} comment{{ total_comments|pluralize }}{% endblocktrans %}
+                                      </h2>
+                                    {% endwith %}
+
+                                    {% for comment in comments %}
+                                      <div class="comment">
+                                        <p class="info">
+                                            {% blocktrans %}Comment {{ forloop.counter }} by {{ comment.name }}{% endblocktrans %} <br>  {{ comment.created }}
+                                        </p>
+                                        {{ comment.body|safe }}
+                                      </div>
+                                    {% empty %}
+                                      <p>{% trans "There are no comments yet" %}.</p>
+                                    {% endfor %}
+                                    </p>
+                                </div>
+                            </div> 
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% if recommended_products %}
+     <div>
+        <div class="product__discount">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="section-title related__product__title">
+                <h2>{% trans "People who bought this also bought" %}</h2>
+              </div>
+            </div>
+          </div>
+            
+            <div class="row">
+                <div class="product__discount__slider owl-carousel">
+                {% for product in recommended_products %}
+     	            <div class="col-lg-4">
+                        <div class="product__discount__item">
+                            <div class="product__discount__item__pic set-bg"
+                                    data-setbg="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+                                {% if product.discount %}
+           	                        <div class="product__discount__percent">-{{product.discount}}%</div>
+                                {% endif %}
+                                <ul class="product__item__pic__hover">
+                                    
+                                    <li><a href="{{ product.get_absolute_url }}"><i class="fas fa-search"></i></a></li>
+                                    
+                                    <li><a href="{{ product.get_absolute_url }}"><i class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product__discount__item__text">
+                                <span>{{ product.category__name }}</span>
+                                <h5><a href="#">{{ product.name }}</a></h5>
+                                <div class="product__item__price">$
+                                    {{ product.get_price_after_dis|floatformat:"2" }} 
+                                    {% if product.discount %}<span>${{product.price}}</span>{% endif %}
+                                </div>
+                          	</div>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    <!-- Product Details Section End -->
+  {% endif %}
+{% endblock content %}

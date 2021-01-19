@@ -1,0 +1,408 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-09 20:24+0000\n"
+"PO-Revision-Date: 2021-01-09 20:42+0000\n"
+"Last-Translator: b'  <>'\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Translated-Using: django-rosetta 0.9.5\n"
+
+#: cart/templates/cart/detail.html:7 cart/templates/cart/detail.html:50
+msgid "Your shopping cart"
+msgstr "Korzina"
+
+#: cart/templates/cart/detail.html:30 cart/templates/cart/detail.html:33
+#, fuzzy
+#| msgid "Your shopping cart"
+msgid "Shopping Cart"
+msgstr "Korzina"
+
+#: cart/templates/cart/detail.html:32 shop/templates/shop/header.html:67
+#: shop/templates/shop/humberger.html:58
+#: shop/templates/shop/product/detail.html:30
+#: shop/templates/shop/product/list.html:25
+msgid "Home"
+msgstr "Baş sahypa"
+
+#: cart/templates/cart/detail.html:51
+msgid "Price"
+msgstr "Bahasy"
+
+#: cart/templates/cart/detail.html:52
+msgid "Quantity"
+msgstr "Sany"
+
+#: cart/templates/cart/detail.html:53 cart/templates/cart/detail.html:236
+msgid "Total"
+msgstr "Jemi"
+
+#: cart/templates/cart/detail.html:157 cart/templates/cart/detail.html:203
+msgid "Update"
+msgstr "Täzelen"
+
+#: cart/templates/cart/detail.html:209
+#: wishlist/templates/wishlist/detail.html:20
+msgid "Remove"
+msgstr "Ayyrmak"
+
+#: cart/templates/cart/detail.html:220
+msgid "Subtotal"
+msgstr "Subtotal"
+
+#: cart/templates/cart/detail.html:226
+msgid "coupon"
+msgstr "talon"
+
+#: cart/templates/cart/detail.html:248
+#: shop/templates/shop/product/detail.html:200
+msgid "People who bought this also bought"
+msgstr "Muny satyn alan adamlar hem satyn aldylar"
+
+#: cart/templates/cart/detail.html:261
+msgid "Apply a coupon"
+msgstr "Talony ulanyň"
+
+#: cart/templates/cart/detail.html:264
+msgid "Apply"
+msgstr "Giriş"
+
+#: cart/templates/cart/detail.html:268
+#: wishlist/templates/wishlist/detail.html:27
+msgid "Continue shopping"
+msgstr "Söwda etmegi dowam etdiriň"
+
+#: cart/templates/cart/detail.html:269
+msgid "Checkout"
+msgstr "Çykyş"
+
+#: cart/views.py:26
+msgid "We are really sorry but we dont have so much"
+msgstr "Biz hakykatdanam gynanýarys, ýöne beýle kan ýok"
+
+#: coupons/forms.py:5
+msgid "Coupon"
+msgstr "Talon"
+
+#: myshop/settings.py:152
+msgid "English"
+msgstr "Inlis dili"
+
+#: myshop/settings.py:153
+msgid "Turkmen"
+msgstr "Turkmen dili"
+
+#: myshop/settings.py:154
+msgid "Russian"
+msgstr "Russ dili"
+
+#: shop/templates/shop/base.html:12
+msgid "Online Telefon magazyny"
+msgstr "Online Telefon magazyny"
+
+#: shop/templates/shop/header.html:68 shop/templates/shop/humberger.html:60
+#: shop/templates/shop/product/index.html:65
+msgid "Categories"
+msgstr "Kategoriýalar"
+
+#: shop/templates/shop/header.html:91
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| "                %(items)s item, $%(total)s\n"
+#| "              "
+#| msgid_plural ""
+#| "\n"
+#| "                %(items)s items, $%(total)s\n"
+#| "              "
+msgid ""
+"\n"
+"                                        %(items)s item, $%(total)s\n"
+"                                    "
+msgid_plural ""
+"\n"
+"                                        %(items)s items, $%(total)s\n"
+"                                    "
+msgstr[0] ""
+"\n"
+" %(items)s produkt, $%(total)s"
+msgstr[1] ""
+"\n"
+" %(items)s produktlar, $%(total)s"
+
+#: shop/templates/shop/humberger.html:24
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| "                %(items)s item, $%(total)s\n"
+#| "              "
+#| msgid_plural ""
+#| "\n"
+#| "                %(items)s items, $%(total)s\n"
+#| "              "
+msgid ""
+"\n"
+"                            %(items)s item, $%(total)s\n"
+"                        "
+msgid_plural ""
+"\n"
+"                            %(items)s items, $%(total)s\n"
+"                        "
+msgstr[0] ""
+"\n"
+" %(items)s produkt, $%(total)s"
+msgstr[1] ""
+"\n"
+" %(items)s produktlar, $%(total)s"
+
+#: shop/templates/shop/humberger.html:51
+msgid "Login"
+msgstr "Login"
+
+#: shop/templates/shop/humberger.html:69
+#, fuzzy
+#| msgid "Your shopping cart"
+msgid "Shoping Cart"
+msgstr "Korzina"
+
+#: shop/templates/shop/humberger.html:70
+#, fuzzy
+#| msgid "Checkout"
+msgid "Check Out"
+msgstr "Çykyş"
+
+#: shop/templates/shop/product/detail.html:81
+msgid "New"
+msgstr "Täze"
+
+#: shop/templates/shop/product/detail.html:97
+msgid "Add to cart"
+msgstr "Korzina gosmak"
+
+#: shop/templates/shop/product/detail.html:103
+#, fuzzy
+#| msgid "Add to wishlist"
+msgid "Add to Wishlist"
+msgstr "Arzuw sanawyna goş"
+
+#: shop/templates/shop/product/detail.html:127
+msgid "Description"
+msgstr "Düşündiriş"
+
+#: shop/templates/shop/product/detail.html:131
+#: shop/templates/shop/product/detail.html:148
+msgid "Add a comment"
+msgstr "Teswir goşuň"
+
+#: shop/templates/shop/product/detail.html:135
+msgid "Comments"
+msgstr "Teswirler"
+
+#: shop/templates/shop/product/detail.html:142
+#: shop/templates/shop/product/detail.html:165
+msgid "Products Infomation"
+msgstr "Önüm barada maglumat"
+
+#: shop/templates/shop/product/detail.html:151
+msgid "Your comment has been added."
+msgstr "Teswiriňiz goşuldy"
+
+#: shop/templates/shop/product/detail.html:153
+msgid "Add a new comment"
+msgstr "Täze teswir goşuň"
+
+#: shop/templates/shop/product/detail.html:157
+msgid "Add comment"
+msgstr "Teswir goşuň"
+
+#: shop/templates/shop/product/detail.html:169
+#, python-format
+msgid "%(total_comments)s comment%(total_comments|pluralize)s"
+msgstr "%(total_comments) teswirleri %(total_comments|pluralize)s"
+
+#: shop/templates/shop/product/detail.html:176
+#, python-format
+msgid "Comment %(forloop.counter)s by %(comment.name)s"
+msgstr " %(forloop.counter)s sini %(comment.name)s bilen düşündiriň"
+
+#: shop/templates/shop/product/detail.html:181
+msgid "There are no comments yet"
+msgstr "Entek teswir ýok"
+
+#: shop/templates/shop/product/index.html:19
+#, fuzzy
+#| msgid "Categories"
+msgid "All Categories"
+msgstr "Kategoriýalar"
+
+#: shop/templates/shop/product/index.html:36
+msgid "SEARCH"
+msgstr "Gözleg"
+
+#: shop/templates/shop/product/index.html:43
+#, python-format
+msgid ""
+"\n"
+"                                <span>FRUIT FRESH</span>\n"
+"                                <h2>Vegetable <br />100%% Organic</h2>\n"
+"                                <p>Free Pickup and Delivery Available</p>\n"
+"                            "
+msgstr ""
+"\n"
+"<span>ORIGINAL PRODUKTLAR</span>\n"
+"<h2>Telefonlar <br />100%% Original</h2>\n"
+"<p>Mugt alma we eltip bermek mümkin</p>"
+
+#: shop/templates/shop/product/index.html:48
+msgid "SHOP NOW"
+msgstr "SARGA BASLAMAK"
+
+#: shop/templates/shop/product/index.html:100
+#, fuzzy
+#| msgid "Product"
+msgid "Latest Product"
+msgstr "Produkt"
+
+#: shop/templates/shop/product/index.html:150
+msgid "Most Viewed Product"
+msgstr "Iň köp görülýän önümler"
+
+#: shop/templates/shop/product/index.html:207
+msgid "Max price Product"
+msgstr "Iň ýokary baha onümler"
+
+#: shop/templates/shop/product/index.html:260
+#, fuzzy
+#| msgid "Product"
+msgid "All Product"
+msgstr "Produkt"
+
+#: shop/templates/shop/product/index.html:314
+msgid "Min price Product"
+msgstr "Iň pes bahaly önümler"
+
+#: shop/templates/shop/product/list.html:10
+msgid "Products"
+msgstr "Önümler"
+
+#: shop/templates/shop/product/list.html:23
+msgid "Organi Shop"
+msgstr "Telefon dükany"
+
+#: shop/templates/shop/product/list.html:29
+msgid "Shop"
+msgstr "Dükan"
+
+#: shop/templates/shop/product/list.html:61
+msgid "Sort By"
+msgstr "Sayhala"
+
+#: shop/templates/shop/product/list.html:80
+#, fuzzy
+#| msgid "Products"
+msgid "Products found"
+msgstr "Önümler"
+
+#: shop/templates/shop/product/list.html:127
+#, python-format
+msgid ""
+"Showing products %(products.start_index)s - %(products.end_index)s of "
+"%(products.count)s results."
+msgstr ""
+"Önümleriň\n"
+"%(products.start_index)s -\n"
+"%(products.end_index)s\n"
+"%(products.count) netijelerini görkezmek."
+
+#: shop/templates/shop/product/list.html:151
+msgid "Most Viewed"
+msgstr "Iň köp görülen"
+
+#: shop/templates/shop/product/pagination.html:8
+#, python-format
+msgid "Page %(page.number)s of %(page.paginator.num_pages)s."
+msgstr ""
+"Sahypanyň %(page.number)s\n"
+"%(page.paginator.num_pages)s sahypasy."
+
+#: shop/templates/shop/product/search.html:5
+msgid "Search"
+msgstr "Gözlemek"
+
+#: shop/templates/shop/product/search.html:9
+msgid "Products containing "
+msgstr "Içindäki önümler"
+
+#: shop/templates/shop/product/search.html:12
+#, python-format
+msgid "Found %(total_results)s result%(total_results|pluralize)s"
+msgstr "Jemi %(total_results) netijesi %(total_results|pluralize)s tapyldy"
+
+#: shop/templates/shop/product/search.html:25
+msgid "There are no results for your query."
+msgstr "Islegiňiz üçin netije ýok."
+
+#: shop/templates/shop/product/search.html:28
+msgid "Search again"
+msgstr "Tazeden gözläň"
+
+#: shop/templates/shop/product/search.html:30
+#, fuzzy
+#| msgid "Products"
+msgid "Search for products"
+msgstr "Önümler"
+
+#: wishlist/templates/wishlist/detail.html:7
+#: wishlist/templates/wishlist/detail.html:11
+msgid "Your shopping wishlist"
+msgstr "Söwda islegleriň sanawy"
+
+#~ msgid "Image"
+#~ msgstr "Surat"
+
+#~ msgid "Unit price"
+#~ msgstr "Bölümiň bahasy"
+
+#~ msgid "My shop"
+#~ msgstr "Dükanym"
+
+#~ msgid "Language"
+#~ msgstr "Dil"
+
+#~ msgid "Your cart"
+#~ msgstr "Korzinanyz"
+
+#~ msgid "Your cart is empty."
+#~ msgstr "Korzinanyz bos"
+
+#~ msgid "All"
+#~ msgstr "Hemmesi"
+
+#~ msgid "admin/"
+#~ msgstr "admin/"
+
+#~ msgid "account/"
+#~ msgstr "account/"
+
+#~ msgid "cart/"
+#~ msgstr "korzina/"
+
+#~ msgid "wishlist"
+#~ msgstr "isleg sanawy"
+
+#~ msgid "orders"
+#~ msgstr "sargytlar"
+
+#~ msgid "coupons"
+#~ msgstr "talonlar"

@@ -1,0 +1,11 @@
+{
+  "name": "signup_form",
+  "version": "1.0.0",
+  "description": "A simple signup form",
+  "main": "index.js",
+  "scripts": {
+    "start": "sass ./style.scss ./style.css --watch"
+  },
+  "author": "Ziddah Edem",
+  "license": "ISC"
+}

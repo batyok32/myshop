@@ -1,0 +1,98 @@
+{% load i18n %}
+{% load product_tags %}
+{% load static %}
+    {% get_current_language as LANGUAGE_CODE %}
+    {% get_available_languages as LANGUAGES %}
+    {% get_language_info_list for LANGUAGES as languages %}
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    
+                    <div class="col-lg-6 col-md-6">
+                        <div class="header__top__right">
+                            
+
+                           <!-- Languages -->
+                            <div class="header__top__right__language">
+                                    <a href='/{{ language.code }}/'>
+                                        <img class='icon_img' src="{% static 'img/' %}{{language.code}}.ico">
+                                        <div>{{ language.name }}</div>
+                                    </a>
+                                    <span class="arrow_carrot-down"></span>
+                                    <ul>
+                                        {% for language in languages %}
+                                            <li><a href="/{{ language.code }}/">{{language.name}}</a></li>
+                                        {% endfor %}
+                                    </ul>
+
+                            </div>
+                            <div class="header__top__right__auth">
+                                <a href="{% url 'login' %}"><i class="fa fa-user"></i> Login</a>
+                            </div>
+                        </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="header__logo">
+                        <a href="{% url 'shop:product_list' %}"><img src="{% static 'img/logo.png' %}" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <nav class="header__menu">
+                        <ul>
+                            <li><a href="{% url 'shop:product_list' %}">{% trans "Home" %}</a></li>
+                            <li><a href="{% url 'shop:product_list' %}">{% trans "Categories" %}</a>
+                            {% if categories %}
+                                <ul class="header__menu__dropdown">
+                                    {% for c in categories %}
+                                        <li><a href="{{ c.get_absolute_url }}">{{ c.name }}</a></li>
+					                {% endfor %}
+                                </ul>
+                            {% endif %}
+                            </li>
+                            <li><a href="{% url 'shop:contact' %}">{% trans "Contact" %}</a></li>
+                            <li><a href="{% url 'dashboard' %}">{% trans "Dashboard" %}</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-2">
+                    <div class="header__cart">
+                        {% with total_items=cart|length %}
+                            <ul>
+                                <li><a href="{% url 'wishlist:wishlist_detail' %}"><i class="fa fa-heart"></i> 
+                                {% if wishlist|length > 0 %}
+                                <span>
+                                    {% with total_items_wish=wishlist|length %}
+                                        {{ total_items_wish }}
+                                    {% endwith %}
+                                </span>
+                                {% endif %}
+                                </a></li>    
+                                <li><a href="{% url 'cart:cart_detail' %}"><i class="fa fa-shopping-bag"></i><span>{{ total_items }}</span></a></li>
+                            </ul>
+                            {% if total_items > 0 %}
+                                <div style='margin-top:10px;' class="header__cart__price">
+                                    {% blocktrans with total=cart.get_total_price count items=total_items %}
+                                        {{ items }} item, ${{ total }}
+                                    {% plural %}
+                                        {{ items }} items, ${{ total }}
+                                    {% endblocktrans %}
+                                </div>
+                            {% endif %} 
+                        {% endwith %}
+                    </div>
+                </div>
+            </div>
+            <div class="humberger__open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+
+

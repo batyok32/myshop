@@ -1,0 +1,160 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-09 20:24+0000\n"
+"PO-Revision-Date: 2020-12-29 06:43+0000\n"
+"Last-Translator: b'  <>'\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Translated-Using: django-rosetta 0.9.5\n"
+
+#: orders/models.py:18
+msgid "first name"
+msgstr "first name"
+
+#: orders/models.py:19
+msgid "email"
+msgstr "email"
+
+#: orders/models.py:20
+msgid "address"
+msgstr "address"
+
+#: orders/models.py:21
+msgid "city"
+msgstr "city"
+
+#: orders/models.py:32
+msgid "phone_number"
+msgstr ""
+
+#: orders/templates/admin/orders/order/detail.html:4
+#: orders/templates/admin/orders/order/detail.html:11
+#: orders/templates/admin/orders/order/detail.html:17
+msgid "Order"
+msgstr "Order"
+
+#: orders/templates/admin/orders/order/detail.html:9
+msgid "Home"
+msgstr "Home"
+
+#: orders/templates/admin/orders/order/detail.html:10
+msgid "Orders"
+msgstr "Orders"
+
+#: orders/templates/admin/orders/order/detail.html:12
+msgid "Detail"
+msgstr "Detail"
+
+#: orders/templates/admin/orders/order/detail.html:20
+msgid "Print order"
+msgstr "Print order"
+
+#: orders/templates/admin/orders/order/detail.html:25
+msgid "Created"
+msgstr "Created"
+
+#: orders/templates/admin/orders/order/detail.html:29
+msgid "Customer"
+msgstr "Customer"
+
+#: orders/templates/admin/orders/order/detail.html:33
+#, fuzzy
+#| msgid "email"
+msgid "E-mail"
+msgstr "email"
+
+#: orders/templates/admin/orders/order/detail.html:37
+#, fuzzy
+#| msgid "address"
+msgid "Address"
+msgstr "address"
+
+#: orders/templates/admin/orders/order/detail.html:44
+msgid "Total amount"
+msgstr "Total amount"
+
+#: orders/templates/admin/orders/order/detail.html:55
+msgid "Items bought"
+msgstr "Items bought"
+
+#: orders/templates/admin/orders/order/detail.html:59
+msgid "Product"
+msgstr "Product"
+
+#: orders/templates/admin/orders/order/detail.html:60
+msgid "Price"
+msgstr "Price"
+
+#: orders/templates/admin/orders/order/detail.html:61
+msgid "Quantity"
+msgstr "Quantity"
+
+#: orders/templates/admin/orders/order/detail.html:62
+msgid "Coupon code"
+msgstr ""
+
+#: orders/templates/admin/orders/order/detail.html:63
+msgid "Discont"
+msgstr ""
+
+#: orders/templates/admin/orders/order/detail.html:64
+#: orders/templates/admin/orders/order/detail.html:79
+#: orders/templates/orders/order/create.html:28
+msgid "Total"
+msgstr "Total"
+
+#: orders/templates/orders/order/create.html:5
+#: orders/templates/orders/order/create.html:10
+msgid "Checkout"
+msgstr "Checkout"
+
+#: orders/templates/orders/order/create.html:12
+msgid "Your order"
+msgstr "Your order"
+
+#: orders/templates/orders/order/create.html:22
+#, python-format
+msgid ""
+"\n"
+"                        \"%(code)s\" (%(discount)s%% off)\n"
+"                    "
+msgstr ""
+"\n"
+" \"%(code)s\" (%(discount)s%% off)"
+
+#: orders/templates/orders/order/create.html:32
+msgid "Place order"
+msgstr "Place order"
+
+#: orders/templates/orders/order/created.html:4
+#: orders/templates/orders/order/created.html:8
+msgid "Thank you"
+msgstr "Thank you"
+
+#: orders/templates/orders/order/created.html:9
+msgid "Your order has been successfully completed. Your order number is"
+msgstr "Your order has been successfully completed. Your order number is"
+
+#~ msgid "last name"
+#~ msgstr "last name"
+
+#~ msgid "Status"
+#~ msgstr "Status"
+
+#~ msgid "Paid"
+#~ msgstr "Paid"
+
+#~ msgid "Pending payment"
+#~ msgstr "Pending payment"

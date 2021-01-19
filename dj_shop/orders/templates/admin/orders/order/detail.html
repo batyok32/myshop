@@ -1,0 +1,90 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+{% block title %}
+{% trans "Order" %} {{ order.id }} {{ block.super }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    <div class="breadcrumbs">
+        <a href="{% url "admin:index" %}">{% trans "Home" %}</a> &rsaquo;
+        <a href="{% url "admin:orders_order_changelist" %}">{% trans "Orders" %}</a>&rsaquo;
+        <a href="{% url "admin:orders_order_change" order.id %}">{% trans "Order" %} {{ order.id }}</a>
+        &rsaquo; {% trans "Detail" %}
+    </div>
+{% endblock %}
+
+{% block content %}
+    <h1>{% trans "Order" %} {{ order.id }}</h1>
+    <ul class="object-tools">
+        <li>
+            <a href="#" onclick="window.print();">{% trans "Print order" %}</a>
+        </li>
+    </ul>
+    <table>
+        <tr>
+            <th>{% trans "Created " %}</th>
+            <td> {{ order.created }}</td>
+        </tr>
+        <tr>
+            <th>{% trans "Customer " %}</th>
+            <td>Name :  {{ order.first_name }} Username : {{ order.user.username }}</td>
+        </tr>
+        <tr>
+            <th>{% trans "E-mail " %}</th>
+            <td><a href="mailto: {{ order.email }}">{{ order.email }}</a></td>
+        </tr>
+        <tr>
+            <th>{% trans "Address " %}</th>
+            <td>
+                {{ order.address }},<br>
+            </td>
+        </tr>
+        <tr>
+            <th>{% trans "City " %}</th>
+            <td>
+                {{ order.city }},<br>
+            </td>
+        </tr>
+        
+        <tr>
+            <th>{% trans "Total amount" %}</th>
+            <td>${{ order.get_total_cost|floatformat:"2" }}</td>
+        </tr>
+        {% comment %} <tr>
+            <th>{% trans "Status" %}</th>
+            <td>{% if order.paid %}{% trans "Paid" %}{% else %}{% trans "Pending payment" %}{% endif %}</td>
+        </tr> {% endcomment %}
+    </table>
+
+    <div class="module">
+        <h2>{% trans "Items bought" %}</h2>
+        <table style="width:100%">
+            <thead>
+                <tr>
+                    <th>{% trans "Product" %}</th>
+                    <th>{% trans "Price" %}</th>
+                    <th>{% trans "Quantity" %}</th>
+                    <th>{% trans "Coupon code" %}</th>
+                    <th>{% trans "Discont" %}</th>
+                    <th>{% trans "Total" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in order.items.all %}
+                    <tr class="row{% cycle "1" "2" %}">
+                        <td>{{ item.product.name }}</td>
+                        <td class="num">${{ item.price }}</td>
+                        <td class="num">{{ item.quantity }}</td>
+                        <td class="num">{{ item.coupon.code }}</td>
+                        <td class="num">{{ item.coupon.discount }}</td>
+                        <td class="num">${{ item.get_cost }}</td>
+                    </tr>
+                {% endfor %}
+                <tr class="total">
+                    <td colspan="3">{% trans "Total" %}</td>
+                    <td class="num">${{ order.get_total_cost }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

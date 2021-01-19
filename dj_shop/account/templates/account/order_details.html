@@ -1,0 +1,182 @@
+{% extends "account_base.html" %}
+{% load static %}
+{% load i18n %}
+{% load product_tags %}
+{% block title %}{{order.id}}{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    
+                <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+                    
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">{% trans "Personal information" %}</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>{% trans "Id" %}</th>
+											<th >{% trans "First_name" %}</th>
+											<th >{% trans "Username" %}</th>
+                      						<th >{% trans "Email" %} </th>
+											<th>{% trans "Phone number" %}</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>{% trans "Id" %}</th>
+											<th >{% trans "First_name" %}</th>
+											<th >{% trans "Username" %}</th>
+                      						<th >{% trans "Email" %} </th>
+											<th>{% trans "Phone number" %}</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr>
+                                            <td><a href="{{order.get_absolute_url}}"><strong>{{order.id}}</strong></a></td>
+											<td >{{order.first_name}}</td>
+											<td >{{order.user.username}}</td>
+											<td >{{order.email}}</td>
+											<td >+993{{order.phone_number}}</td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+					<div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">{% trans "Optional" %}</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                           <th>{% trans "Address" %}</th>
+											<th>{% trans "City" %}</th>
+											<th>{% trans "Created" %}</th>			
+											<th>{% trans "Order notes" %}</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>{% trans "Address" %}</th>
+											<th>{% trans "City" %}</th>
+											<th>{% trans "Created" %}</th>			
+											<th>{% trans "Order notes" %}</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr>
+                                            <td >{{order.address}}</td>
+											<td >{{order.city}}</td>
+											<td >{{order.created}}</td>
+											<td >{{order.order_notes}}</td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+					 <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">{% trans "Order detail" %}</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>{% trans "Coupon" %}</th>
+											<th>{% trans "Discount" %}</th>
+											<th>{% trans "Total" %}</th>
+											<th>{% trans "Delete" %}</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>{% trans "Coupon" %}</th>
+											<th>{% trans "Discount" %}</th>
+											<th>{% trans "Total" %}</th>
+											<th>{% trans "Delete" %}</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr>
+                                            <td >{{order.coupon.code}}</td>
+											<td >{{order.discount}}</td>
+											<td>{{order.get_total_cost|floatformat:"2"}}
+											<td style='float:left;' ><button style='text-align:left;' class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                				<span aria-hidden="true"><a style='text-decoration:none;' href="{% url 'order_delete' order.id %}">×</a></span>
+                            					</button>
+                       						</td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+					 <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">{% trans "Order items" %}</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                        {% comment %} product           
+                                            category
+                                            brand {% endcomment %}
+                                                    
+                                            <th>{% trans "#" %}</th> 
+                                            <th>{% trans "Name" %}</th> 
+											<th>{% trans "Price" %}</th>
+											<th>{% trans "Quantity" %}</th>
+											<th>{% trans "Total" %}</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>{% trans "#" %}</th> 
+                                            <th>{% trans "Name" %}</th> 
+											<th>{% trans "Price" %}</th>
+											<th>{% trans "Quantity" %}</th>
+											<th>{% trans "Total" %}</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        {% for item in order.items.all %}
+                                        <tr>
+                                            <td >{{forloop.counter}}.</td>
+                                            <td ><a href="{{item.product.get_absolute_url}}">{{item.product.name}}<small>({{item.product.category}})</small></a></td>
+											<td >{{item.price}}</td>
+											<td >{{item.quantity}}</td>
+											<td >{{item.get_cost|floatformat:"2"}}</td>
+                                        </tr>
+                                        {% endfor %}
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+</div>
+
+{% endblock %}
